@@ -1,4 +1,0 @@
-notes
-=====
-
-a note pad
