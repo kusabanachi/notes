@@ -1,6 +1,6 @@
-### swp_pager_meta_build を読んでみる
+# swp_pager_meta_build を読んでみる
 
-`swp_pager_meta_build`はスワップページャのputpages関数で2回呼ばれています。
+`swp_pager_meta_build`関数はスワップページャのputpages関数で2回呼ばれています！
 
 > File sys/vm/swap_pager.c, line 1219 ~  
 オブジェクトの型がOBJT_SWAPじゃない時
