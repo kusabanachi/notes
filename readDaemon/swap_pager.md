@@ -71,9 +71,9 @@ swap_pager_putpages(vm_object_t object, vm_page_t *m, int count,
 
 ループを回して、ページアウトするページ数分(`count`)のブロックを`swp_pager_getswapspace(n)`で確保します。
 * `1278:`nは1回のgetで要求するページ数で、残りの必要な数(`count-i`)と各種MAX値を越えない範囲のminで決定します。
-* `1289:``swp_pager_getswapspace`を呼出し、失敗(`SWAPBLK_NONE`)時はnを右シフトで減算してリトライします。  
+* `1289:``swp_pager_getswapspace`を呼出し、失敗時(`SWAPBLK_NONE`)はnを右シフトで減算してリトライします。  
 成功時はblkは獲得したスワップブロックの位置が返ります。
-* `1295:`nが4未満でも失敗した時はwhileを抜けて、`rtvals`の該当する箇所を`VM_PAGER_FAIL`で埋めて、ループの最初に戻ります。  
+* `1295:`nが4以下でも失敗した時はwhileを抜けて、`rtvals`の該当する箇所を`VM_PAGER_FAIL`で埋めて、ループの最初に戻ります。  
 
 **というわけでスワップブロックはページアウトするページと同じ数だけ要求しています。**  
 あと、できるだけまとまった数を一度に確保しようとします。  
